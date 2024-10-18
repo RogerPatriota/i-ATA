@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "meeting-notes-generator"
+version = "0.1.0"
+description = "Automatic creation of minutes based on the transcript of a meeting"
+authors = ["Roger Santos <roger.santos@global.ntt>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+openai = "^1.51.0"
+moviepy = "^1.0.3"
+speechrecognition = "^3.10.4"
+pydub = "^0.25.1"
+google-generativeai = "^0.8.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
