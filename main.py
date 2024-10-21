@@ -35,4 +35,4 @@ exec_end = timeit.default_timer()
 print(response.text)
 print(response.usage_metadata)
 
-print('program execution time: {:.2f}'.format(exec_end - exec_start))
+print('program execution time: {:.2f}s'.format(exec_end - exec_start))
