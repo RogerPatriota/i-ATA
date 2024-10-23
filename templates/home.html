@@ -14,12 +14,13 @@
         </p>
         <div class="input-area">
 
-            <form action="">
+            <form action="home" method="post" enctype="multipart/form-data">
                 <label for="meeting-record" class="drop-container" id="dropcontainer">
                     <span id="drop-title">Drop meeting record here</span>
-                    <p>or</p>
-                    <input type="file" id="meeting-record" required>
+                    or
+                    <input type="file" id="meeting-record" name="file" required>
                 </label>
+                <input type="submit" id="sub-button">
             </form>
 
             <div class="meeting-note">
