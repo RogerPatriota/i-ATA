@@ -164,3 +164,4 @@ cython_debug/
 assets/
 tanscript
 sr_main.py
+services/temp/
