@@ -16,12 +16,10 @@ video_path = './assets/'
 full_transcript = ''
 
 #extract audio from the video and save into a file
-def test(video):
-    clip = mp.VideoFileClip(video)
-    #clip = mp.VideoFileClip(video_path + video_name)
-    clip.audio.write_audiofile(video_path + 'audio.wav')
+clip = mp.VideoFileClip(video_path + video_name)
 
-    return True
+#clip = mp.VideoFileClip(video_path + video_name)
+clip.audio.write_audiofile(video_path + 'audio.wav')
 
 # save the audio in a variable
 audio = AudioSegment.from_wav(video_path + 'audio.wav')
