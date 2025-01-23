@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 
 from .services.audio import MovieEditor
 from .services.google import Genai
+from .services.azure import Azure
 
 import moviepy.editor as mp
 import google.generativeai as genai
@@ -48,10 +49,10 @@ async def home_video(request: Request, file: UploadFile):
     content = await file.read()
 
     editor = MovieEditor()
-    audio = editor.create_file(file, content)
+    audio_path = editor.create_file(file, content)
 
     google_client = Genai('gemini-1.5-flash')
-    audio_genai = google_client.upload_content(audio)
+    audio_genai = google_client.upload_content(audio_path)
 
     response = google_client.generate_content(
         'Resumir o áudio como uma ATA de reunião, responda em formato HTML',
@@ -71,6 +72,39 @@ async def home_video(request: Request, file: UploadFile):
 async def home_video_azure(request: Request, file: UploadFile):
     content = await file.read()
 
+    audio = MovieEditor()
+    audio_path = audio.create_file(file, content)
+
+    azure = Azure()
+    response= azure.audio_transcription(file, audio_path)
+
+
+    html_content = f"""
+        <html>
+            <head>
+                <title>ATA GERADA</title>
+            </head>
+            <body>
+                <h1>{response}</h1>
+            </body>
+        </html>
+    """
+    
+    return HTMLResponse(content=html_content, status_code=200)
+
+    template.TemplateResponse(
+        request=request, name='upload.html', context={'file': file, 'response': response}
+    )
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    '''
     with open('temp_video_midia.mp4', 'wb') as temp_file:
         temp_file.write(content)
     
@@ -80,29 +114,15 @@ async def home_video_azure(request: Request, file: UploadFile):
     url = f'https://{az_region}.api.cognitive.microsoft.com/speechtotext/transcriptions:transcribe?api-version=2024-11-15'
 
     header = {
+        "Content-Type": "multipart/form-data",
         "Ocp-Apim-Subscription-Key": az_st_key
     }
 
     files = {
         "audio": (file.filename, open('temp_audio.wav', 'rb'), 'audio/wav'),
-        "definition": ('', '{"locales":["en-US"]}', 'application/json')
+        "definition": ('', '{"locales":["pt-BR"]}', 'application/json')
     }
 
     response = request.post(url, header=header, file=files)
 
-    text = response.json().get("combinedPhrases", [])
-
-
-
-    html_content = f"""
-        <html>
-            <head>
-                <title>Some HTML in here</title>
-            </head>
-            <body>
-                <h1>{text}</h1>
-            </body>
-        </html>
-    """
-    
-    return HTMLResponse(content=html_content, status_code=200)
+    text = response.json().get("combinedPhrases", [])'''
