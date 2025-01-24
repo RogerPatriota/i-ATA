@@ -8,22 +8,7 @@ from .services.audio import MovieEditor
 from .services.google import Genai
 from .services.azure import Azure
 
-import moviepy.editor as mp
-import google.generativeai as genai
-import os, dotenv
-
 app = FastAPI()
-
-dotenv.load_dotenv()
-
-# GOOGLE KEYS
-genai_key = os.getenv("GEMINI_AI_KEY")
-genai.configure(api_key=genai_key)
-
-#AZURE KEYS
-az_region = os.getenv("SERVICE_REGION")
-az_st_key = os.getenv("SPEECH_TO_TEXT_KEY")
-
 
 app.mount('/static', StaticFiles(directory='static'), name='static')
 template = Jinja2Templates(directory="templates")
@@ -55,7 +40,7 @@ async def home_video(request: Request, file: UploadFile):
     audio_genai = google_client.upload_content(audio_path)
 
     response = google_client.generate_content(
-        'Resumir o áudio como uma ATA de reunião, responda em formato HTML',
+        'Com base no audio, escreva uma ATA da reunião. Essa ATA deve contar os seguintes topicos: contexto, topicos da reunia, discussão, porximas acoes, responda no formato HTML',
         audio_genai
         )
     
