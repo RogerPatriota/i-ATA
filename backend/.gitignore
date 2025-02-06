@@ -1,0 +1,47 @@
+# Arquivos compilados do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configurações do ambiente virtual
+venv/
+.env/
+.envrc
+*.env
+*.venv
+
+# Configuração do editor e sistema operacional
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs e arquivos de depuração
+logs/
+*.log
+
+# Dependências do Python
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Arquivos gerados pelo pytest e coverage
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# Banco de dados SQLite (caso use um)
+*.sqlite3
+*.db
+
+# Docker
+docker-compose.override.yml
+
+# Arquivos de build
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook checkpoints (caso use)
+.ipynb_checkpoints/
