@@ -1,2 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Liter&display=swap');
 @import "tailwindcss";
+
+@layer base {
+    body {
+        font-family: 'Kalnia Glaze', sans-serif;
+    }
+}

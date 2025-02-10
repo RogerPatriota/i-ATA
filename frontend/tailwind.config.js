@@ -1,16 +1,14 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 
-module.exports = {
-    content: [
-      "./src/**/*.{js,jsx,ts,tsx}",
-    ],
-    theme: {
-      extend: {
-        fontFamily: {
-          liter: ['Liter', 'serif'],
-        },
-      },
+export const content = [
+  "./src/**/*.{js,jsx,ts,tsx}",
+];
+export const theme = {
+  extend: {
+    fontFamily: {
+      liter: ['Liter', 'serif'],
     },
-    plugins: [],
-  };
+  },
+};
+export const plugins = [];
