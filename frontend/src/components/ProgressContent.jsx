@@ -25,17 +25,18 @@ export function ProgressContent() {
 
     function changeTab() {
         if (currentStep < steps.length) {
-            setCurrentStep = currentStep + 1  
+            setCurrentStep(currentStep + 1 )  
         } else {
 
         }
     }
 
     return (
-        <div className="m-4 border-1 border-[#EFF0F6] shadow-2xl rounded-2xl w-[100%]  h-160">
+        <div className="m-4 border-1 border-[#EFF0F6] shadow-2xl rounded-2xl w-[100%] h-160 flex flex-col">
             <ProgressBar steps={steps} currentStep={currentStep}/>
             { steps[currentStep - 1].label}
-            <button onClick={changeTab}>Next</button>
+            
+            <button onClick={changeTab} className="w-28 h-12 bg-[#4A3AFF]">Next</button>
         </div>
     )
 }
