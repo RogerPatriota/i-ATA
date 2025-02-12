@@ -3,7 +3,7 @@ import ProgressBar from "./ProgressBar"
 import { useState } from "react"
 
 export function ProgressContent() {
-    const [currentStep, setCurrentStep ] = useState(3)
+    const [currentStep, setCurrentStep ] = useState(1)
     const steps  = [
         {
             number: 1,
@@ -23,9 +23,19 @@ export function ProgressContent() {
         }
     ]
 
+    function changeTab() {
+        if (currentStep < steps.length) {
+            setCurrentStep = currentStep + 1  
+        } else {
+
+        }
+    }
+
     return (
         <div className="m-4 border-1 border-[#EFF0F6] shadow-2xl rounded-2xl w-[100%]  h-160">
             <ProgressBar steps={steps} currentStep={currentStep}/>
+            { steps[currentStep - 1].label}
+            <button onClick={changeTab}>Next</button>
         </div>
     )
 }
