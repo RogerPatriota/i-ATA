@@ -10,19 +10,23 @@ export function App() {
   const steps  = [
     {
         number: 1,
-        label: <FileDrop />
+        label: 'File',
+        component: <FileDrop />
     },
     {
         number: 2,
-        label: 'model'
+        label: 'Model',
+        component: 'model'
     },
     {
         number: 3,
-        label: 'transcript'
+        label: 'Transcript',
+        component: 'transcript'
     },
     {
         number: 4,
-        label: 'ata'
+        label: 'Ata',
+        component: 'ata'
     }
   ]
 
