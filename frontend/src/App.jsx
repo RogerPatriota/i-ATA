@@ -4,6 +4,8 @@ import ProgressContent  from "./components/ProgressContent"
 import FileDrop  from "./components/FileDrop"
 import Button from "./components/Button"
 import Model from "./components/Model"
+import { Transcript } from "./components/Transcript"
+import MeetingNote from "./components/MeetingNote"
 
 
 export function App() {
@@ -22,12 +24,12 @@ export function App() {
     {
         number: 3,
         label: 'Transcript',
-        component: 'transcript'
+        component: <Transcript />
     },
     {
         number: 4,
         label: 'Ata',
-        component: 'ata'
+        component: <MeetingNote />
     }
   ]
 
