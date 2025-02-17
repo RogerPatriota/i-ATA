@@ -1,8 +1,9 @@
-import { Header } from "./components/Header"
-import { ProgressContent } from "./components/ProgressContent"
-import { FileDrop } from "./components/FileDrop"
 import { useState } from "react"
-import { Button } from "./components/Button"
+import Header from "./components/Header"
+import ProgressContent  from "./components/ProgressContent"
+import FileDrop  from "./components/FileDrop"
+import Button from "./components/Button"
+import Model from "./components/Model"
 
 
 export function App() {
@@ -16,7 +17,7 @@ export function App() {
     {
         number: 2,
         label: 'Model',
-        component: 'model'
+        component: <Model />
     },
     {
         number: 3,
@@ -41,9 +42,9 @@ export function App() {
   return (
     <div>
       <Header />
-      <div className="flex flex-col items-center justify-center p-6 w-6xl m-auto">
-        <h1 className=" text-4xl text-[#170F49] m-5 mt-0 font-semibold">Generete your meetings notes</h1>
-        <p className="text-base text-center text-[#6F6C90]">Please fill the field below with the meeting record, the notes <br/>will be automatic extract</p>
+      <div className="flex flex-col items-center justify-center p-5 w-6xl m-auto">
+        <h1 className=" text-4xl text-[#170F49] m-5 font-semibold">Generete your meetings notes</h1>
+        {/* <p className="text-base text-center text-[#6F6C90]">Please fill the field below with the meeting record, the notes <br/>will be automatic extract</p> */}
         <ProgressContent steps={steps} currentStep={currentStep} onChangeTab={changeTab}/>
 
         <Button onChangeTab={changeTab}/>
