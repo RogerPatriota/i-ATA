@@ -16,15 +16,15 @@ export function FileDrop () {
                 <div className="relative overflow-hidden h-90 pl-5 border-dashed border-3 bg-gray-50 hover:bg-gray-100 border-[#4A3AFF] 
                     flex flex-col justify-center items-center gap-3 rounded-xl cursor-pointer">
                     {filename && (
-                        <div className="absolute top-32 w-100 py-3 flex items-center gap-3 text-xl border-1 border-[#EFF0F6] rounded-md shadow-xl">
-                            <FileDown size={60} className="ml-4 pr-3 border-r-1 border-gray-500"/>
-                            <p className="truncate max-w-full ">{filename}</p>
+                        <div className="absolute top-24 w-120 py-3 flex items-center gap-3 text-lg border-1 border-[#EFF0F6] rounded-md shadow-2xl">
+                            <FileDown size={50} className="ml-4 pr-3 border-r-1 border-gray-500"/>
+                            <p className="truncate max-w-[75%] ">{filename}</p>
                         </div>
                     )}   
                     <label 
                         htmlFor="meeting-file" 
                         className={`w-180 h-90 flex justify-center items-center gap-3 cursor-pointer
-                        ${filename ? 'mt-[20%]' : ''}`}>
+                        ${filename ? 'pt-20' : ''}`}>
                             <span className="font-semibold text-lg font-sans">Drop the file</span>
                             or
                             <span className="bg-[#4A3AFF] py-2 px-8 w-32 rounded-full text-base text-white font-bold text-center">Upload</span>
