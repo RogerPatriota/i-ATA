@@ -33,9 +33,7 @@ export function FileDrop () {
                             className="hidden"
                             required/>
                     </label>
-
                 </div>
-
             </form>
         </div>
     )
