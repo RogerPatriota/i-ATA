@@ -1,3 +1,5 @@
+import React from "react"
+
 export function Transcript() {
     return (
         <div className="w-250 mt-6 flex flex-col items-center gap-3">

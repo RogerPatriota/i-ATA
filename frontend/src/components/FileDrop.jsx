@@ -1,9 +1,21 @@
 import { useState } from "react"
 import { FileDown } from "lucide-react"
+import { useForm } from "../context/FormContext"
 
 
 export function FileDrop () {
-    const [filename, setFilename] = useState()
+    const [ filename, setFilename ] = useState()
+    const { formData, setFormData } = useForm()
+
+    function handleChange(event) {
+        const file = event.target.files[0].name
+        console.log(formData)
+        setFilename(file)
+        if (formData != file) {
+            setFormData('file', file)
+        }
+            
+    }
 
     return (
         <div className="w-180 mt-6 flex flex-col items-center gap-3">
@@ -29,7 +41,7 @@ export function FileDrop () {
                             or
                             <span className="bg-[#4A3AFF] py-2 px-8 w-32 rounded-full text-base text-white font-bold text-center">Upload</span>
                             <input type="file" name="file" id="meeting-file" placeholder="Upload"
-                            onChange={(envent) => {setFilename(envent.target.files[0].name)}}
+                            onChange={handleChange}
                             className="hidden"
                             required/>
                     </label>
