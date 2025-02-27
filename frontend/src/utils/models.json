@@ -2,25 +2,44 @@
     {
         "model": "simple",
         "description": "A simple ATA model with a summary",
-        "content": {
+        "summary": "Titulo, Objetivo, Resumo dos pontos tratados",
+        "example": {
             "Titulo": "Assunto da reunião",
             "Objetivo": "Principais pontos tratados na call",
-            "Resumo dos pontos falados": "Resumo dos principais topicos tratados"
+            "Resumo dos pontos tratados": "Resumo dos principais topicos tratados"
         }
     },
     {
         "model": "medium",
         "description": "A medium ATA model with topics and decision",
-        "content": {
+        "summary": "Titulo, Objetivo, Pontos tratados(cada topico com um titulo, discussão)",
+        "example": {
             "Titulo": "Assunto da reunião",
             "Objetivo": "Principais pontos tratados na call",
             "Pontos tratados": [
                 {
                     "Topico": "Topico 1",
-                    "Discução": "Breve resumo do topico",
-                    "Decisão": "Decisão baseada no topico"
+                    "Discussão": "Breve resumo do topico"
                 }
             ]
         }
+    },
+    {
+        "model": "complex",
+        "description": "A complex ATA model with topics and decision",
+        "summary": "Titulo, Objetivo, Pontos tratados(cada topico com um titulo, discussão e decisões), proximas ações e notas",
+        "example": {
+            "Titulo": "Assunto da reunião",
+            "Objetivo": "Principais pontos tratados na call",
+            "Pontos tratados": [
+                {
+                    "Topico": "Topico 1",
+                    "Discussão": "Breve resumo do topico"
+                }
+            ],
+            "Proximas Ações": "Lista de ações que serão tomadas apos a reunião",
+            "Notas": "Observações e ultimos detalhes"
+        }
     }
+
 ]
