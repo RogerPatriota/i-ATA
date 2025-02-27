@@ -1,0 +1,26 @@
+[
+    {
+        "model": "simple",
+        "description": "A simple ATA model with a summary",
+        "content": {
+            "Titulo": "Assunto da reunião",
+            "Objetivo": "Principais pontos tratados na call",
+            "Resumo dos pontos falados": "Resumo dos principais topicos tratados"
+        }
+    },
+    {
+        "model": "medium",
+        "description": "A medium ATA model with topics and decision",
+        "content": {
+            "Titulo": "Assunto da reunião",
+            "Objetivo": "Principais pontos tratados na call",
+            "Pontos tratados": [
+                {
+                    "Topico": "Topico 1",
+                    "Discução": "Breve resumo do topico",
+                    "Decisão": "Decisão baseada no topico"
+                }
+            ]
+        }
+    }
+]

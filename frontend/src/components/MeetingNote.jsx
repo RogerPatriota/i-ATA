@@ -8,12 +8,12 @@ export function MeetingNote() {
                 <br/>to create de notes, please submit the form
             </p>
             <div className="w-[75%] h-92 border-1 border-gray-300"></div>
-            <div className="flex w-100 mt-5 justify-between items-center">
-                <button className="flex justify-start gap-6 items-center w-42 pl-4 py-2 border-2 border-gray-400 hover:border-[#4A3AFF] rounded-2xl text-xl cursor-pointer">
-                    <Pencil className="text-[#4A3AFF]"/>
-                    <p className="font-bold text-center">Edit</p>
+            <div className="flex w-100 justify-evenly items-center">
+                <button className="flex justify-start gap-3 items-center w-34 pl-6 py-2 border-2 border-gray-400 hover:border-[#4A3AFF] rounded-2xl text-xl cursor-pointer">
+                    <Pencil size={20} className="text-[#4A3AFF]"/>
+                    <p className="font-bold text-center text-lg">Edit</p>
                 </button>
-                <button className="border-2 w-42 py-2 bg-[#4A3AFF] hover:bg-[#4233e7] text-white font-bold rounded-2xl text-xl cursor-pointer">Save</button>               
+                <button className="border-2 w-34 py-2 bg-[#4A3AFF] hover:bg-[#4233e7] text-white font-bold rounded-2xl text-lg cursor-pointer">Save</button>               
             </div>
         </div>
     )
