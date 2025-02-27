@@ -9,7 +9,7 @@ export const FormProvider = ({ children }) => {
         model: ""
     })
 
-    const updateForm = (key, value) => {
+    const updateFormData = (key, value) => {
         setFormData((prev) => ({
             ...prev,
             [key]: value
@@ -17,7 +17,7 @@ export const FormProvider = ({ children }) => {
     }
 
     return (
-        <FormContext.Provider value={{formData, updateForm}}>
+        <FormContext.Provider value={{ formData, updateFormData }}>
             { children }
         </FormContext.Provider>
     )

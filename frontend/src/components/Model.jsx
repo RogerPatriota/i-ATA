@@ -1,9 +1,6 @@
 import { useForm } from "../context/FormContext"
 
 export function Model() {
-    const { formData } = useForm()
-    console.log(formData.file.name)
-
     return (
         <div className="w-250 flex flex-col justify-center items-center mt-6 gap-2">
             <h3 className="text-2xl text-[#494853]">Select the model</h3>

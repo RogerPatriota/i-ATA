@@ -50,7 +50,7 @@ export function App() {
         {/* <p className="text-base text-center text-[#6F6C90]">Please fill the field below with the meeting record, the notes <br/>will be automatic extract</p> */}
         <FormProvider >
           <ProgressContent steps={steps} currentStep={currentStep} onChangeTab={changeTab}/>
-          <Button onChangeTab={changeTab}/>         
+          <Button onChangeTab={changeTab} currentTab={currentStep}/>         
         </FormProvider>
 
       </div>

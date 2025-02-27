@@ -5,16 +5,16 @@ import { useForm } from "../context/FormContext"
 
 export function FileDrop () {
     const [ filename, setFilename ] = useState()
-    const { formData, setFormData } = useForm()
+    const { formData, updateFormData } = useForm()
 
     function handleChange(event) {
-        const file = event.target.files[0].name
-        console.log(formData)
-        setFilename(file)
+        const file = event.target.files[0]
+        setFilename(file.name)
+
+        console.log(event.target.files)
         if (formData != file) {
-            setFormData('file', file)
-        }
-            
+            updateFormData('file', file)
+        }    
     }
 
     return (
