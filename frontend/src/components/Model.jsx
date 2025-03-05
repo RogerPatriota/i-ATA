@@ -50,9 +50,9 @@ export function Model() {
 
             <div className="w-250 mt-5 flex flex-row justify-evenly">
                 <div className="w-80 flex flex-col mt-8 gap-5 items-start">
-                    <button value="simple" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-500">Simple</button>
-                    <button value="medium" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-500">Medium</button>
-                    <button value="complex" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-500">Complex</button>
+                    <button value="simple" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Simple</button>
+                    <button value="medium" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Medium</button>
+                    <button value="complex" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Complex</button>
                 </div>
                 <div className="w-150 max-h-full overflow-auto h-100 border-1 border-gray-300 p-4">
                     {Object.entries(displayModel).map(([key, value]) => (
