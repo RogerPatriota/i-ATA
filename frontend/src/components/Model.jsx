@@ -5,7 +5,8 @@ import { Circle } from "lucide-react"
 export function Model() {
     const [ models, setModels ] = useState([])
     const [ displayModel, setDisplayModel ] = useState([])
-    const [divs, setDivs] = useState([])
+    const [ divs, setDivs ] = useState([])
+    const { formData, updateFormData } = useForm()
 
     useEffect(() => {
         fetch('./models.json', { // por ser na public, o ./ ja encaminha para a root
@@ -18,17 +19,24 @@ export function Model() {
     }, [])
 
     function handleClick(event) {
-        
+        // define the model that will be displayed
         const modelSelected = models.find(model => model.model == event.target.value)
         setDisplayModel(modelSelected.example)
-        
+
+        // define the number of line the placeholder will have
         const x = Math.floor(Math.random() * 3) + 1
         setDivs(genereateDiv(x))
+
+        // set the current model to the context
+        if (modelSelected.summary != formData) {
+            updateFormData('model', modelSelected.summary) 
+        }
+    
     }
 
     const RandonPlaceholder = () => {
         return (
-            <div className="flex flex-row gap-2 mb-3">
+            <div className="flex flex-row gap-2 mb-3 animate-pulse">
                 <Circle size={14} strokeWidth={4} color="#b5b5b8"/>
                 <div className="w-[75%] bg-[#b5b5b8] rounded-xl"></div>
             </div>
@@ -50,9 +58,9 @@ export function Model() {
 
             <div className="w-250 mt-5 flex flex-row justify-evenly">
                 <div className="w-80 flex flex-col mt-8 gap-5 items-start">
-                    <button value="simple" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Simple</button>
-                    <button value="medium" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Medium</button>
-                    <button value="complex" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-3 focus:outline-gray-500">Complex</button>
+                    <button value="simple" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-2 focus:outline-gray-400">Simple</button>
+                    <button value="medium" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-2 focus:outline-gray-400">Medium</button>
+                    <button value="complex" onClick={handleClick} className="w-full px-7 py-3 rounded-2xl border-1 border-gray-300 text-left text-[#6F6C90] text-base hover:border-gray-400 focus:outline-2 focus:outline-gray-400">Complex</button>
                 </div>
                 <div className="w-150 max-h-full overflow-auto h-100 border-1 border-gray-300 p-4">
                     {Object.entries(displayModel).map(([key, value]) => (

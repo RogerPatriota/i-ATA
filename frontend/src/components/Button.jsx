@@ -8,10 +8,10 @@ export function Button(props) {
 
         switch (props.currentTab) {
             case 1:
-                console.log('vai chamar a api de transcript')
+                console.log(formData)
                 break;
             case 2:
-                console.log('vai chamar a api de ATA')
+                console.log(formData)
             default:
                 break;
         }

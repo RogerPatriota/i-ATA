@@ -12,7 +12,7 @@ const ProgressSteps = (props) => {
                 ${index < props.currentStep ? 'bg-[#4A3AFF] text-white font-bold' : 'bg-[#EFF0F6]'}
                 `}>
                 {index + 1 < props.currentStep ? (
-                  <Check size={20}/>
+                  <Check size={20} strokeWidth={3}/>
                   ) : (
                   <span className="text-[15px] font-semibold">{step.number}</span>
                   )}
