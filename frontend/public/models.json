@@ -16,12 +16,8 @@
         "example": {
             "Titulo": "Assunto da reunião",
             "Objetivo": "Principais pontos tratados na call",
-            "Pontos tratados": [
-                {
-                    "Topico": "Topico 1",
-                    "Discussão": "Breve resumo do topico"
-                }
-            ]
+            "Topico": "Topico 1",
+            "Discussão": "Breve resumo do topico"
         }
     },
     {
@@ -31,12 +27,8 @@
         "example": {
             "Titulo": "Assunto da reunião",
             "Objetivo": "Principais pontos tratados na call",
-            "Pontos tratados": [
-                {
-                    "Topico": "Topico 1",
-                    "Discussão": "Breve resumo do topico"
-                }
-            ],
+            "Topico": "Topico 1",
+            "Discussão": "Breve resumo do topico",
             "Proximas Ações": "Lista de ações que serão tomadas apos a reunião",
             "Notas": "Observações e ultimos detalhes"
         }
