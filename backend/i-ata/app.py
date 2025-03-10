@@ -3,12 +3,25 @@ from fastapi import FastAPI, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 from .services.audio import MovieEditor
 from .services.google import Genai
 from .services.azure import Azure
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount('/static', StaticFiles(directory='static'), name='static')
 template = Jinja2Templates(directory="templates")
