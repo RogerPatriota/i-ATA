@@ -1,4 +1,5 @@
 import { useForm } from "../context/FormContext"
+import axios from 'axios'
 
 export function Button(props) {
     const { formData } = useForm()
@@ -8,10 +9,13 @@ export function Button(props) {
 
         switch (props.currentTab) {
             case 1:
-                console.log(formData)
+                axios.get('http://127.0.0.1:8000/health')
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err))
                 break;
             case 2:
-                console.log(formData)
+                console.log('teste 2')
+                break;
             default:
                 break;
         }

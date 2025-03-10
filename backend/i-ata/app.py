@@ -23,11 +23,11 @@ async def add_process_time_header(request: Request, call_next):
     print(f'Execution time: {process_time / 60} minutes')
     return response
 
-@app.get('/', response_class=HTMLResponse)
-async def root(request: Request):
-    return template.TemplateResponse(
-        request=request, name='home.html'
-    )
+
+
+@app.get('/health')
+def point_check():
+    return "check point"
 
 @app.post('/home')
 async def home_video(request: Request, file: UploadFile):

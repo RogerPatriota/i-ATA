@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "meeting-notes-generator"
+name = "i-ata"
 version = "0.1.0"
 description = "Automatic creation of minutes based on the transcript of a meeting"
 authors = ["Roger Santos <roger.santos@global.ntt>"]
-readme = "README.md"
+packages = [
+    { include = "i-ata" }
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.12"
