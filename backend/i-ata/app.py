@@ -36,11 +36,19 @@ async def add_process_time_header(request: Request, call_next):
     print(f'Execution time: {process_time / 60} minutes')
     return response
 
-
-
 @app.get('/health')
 def point_check():
     return "check point"
+
+@app.post('/model')
+async def model(file: UploadFile):
+    content = await file.read()
+
+    editor = MovieEditor()
+    audio_path = editor.create_file(file, content)
+
+    return {"audio_path": audio_path}
+    
 
 @app.post('/home')
 async def home_video(request: Request, file: UploadFile):

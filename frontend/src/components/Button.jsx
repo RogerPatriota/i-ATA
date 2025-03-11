@@ -7,11 +7,20 @@ export function Button(props) {
     function handleSubmit() {
         props.onChangeTab()
 
+        const formPayload = new FormData()
+
         switch (props.currentTab) {
             case 1:
-                axios.get('http://127.0.0.1:8000/health')
+                formPayload.append('file', formData.file)
+
+                axios.post('http://127.0.0.1:8000/model', formPayload, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                })
                 .then((res) => console.log(res.data))
                 .catch((err) => console.log(err))
+
                 break;
             case 2:
                 console.log('teste 2')
