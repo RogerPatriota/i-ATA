@@ -1,4 +1,5 @@
 import time
+import uuid
 from fastapi import FastAPI, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -23,6 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+file_storage = {}
+
 app.mount('/static', StaticFiles(directory='static'), name='static')
 template = Jinja2Templates(directory="templates")
 
@@ -40,14 +43,23 @@ async def add_process_time_header(request: Request, call_next):
 def point_check():
     return "check point"
 
-@app.post('/model')
-async def model(file: UploadFile):
+@app.post('/video_transcription')
+async def video_transcription(file: UploadFile):
     content = await file.read()
 
     editor = MovieEditor()
     audio_path = editor.create_file(file, content)
 
-    return {"audio_path": audio_path}
+    if audio_path not in list(file_storage.values()):
+        file_id = str(uuid.uuid4())
+        file_storage[file_id] = audio_path
+    else:
+        for key, value in file_storage.items():
+            if value == audio_path:
+                file_id = key
+                break
+    
+    return {"file_id": file_id}
     
 
 @app.post('/home')

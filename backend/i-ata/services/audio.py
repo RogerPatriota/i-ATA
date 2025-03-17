@@ -16,7 +16,8 @@ class MovieEditor:
     def create_file(self, file, content):
         #get current path
         current = os.path.dirname(os.path.abspath(__file__))
-        temp_dir = os.path.join(current, 'temp')
+        parent = os.path.dirname(current)
+        temp_dir = os.path.join(parent, 'temp')
 
         if not os.path.exists(temp_dir):
             os.mkdir(temp_dir)
