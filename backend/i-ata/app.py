@@ -1,5 +1,7 @@
 import time
 import uuid
+import json
+
 from fastapi import FastAPI, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -61,19 +63,22 @@ async def video_transcription(file: UploadFile):
     
     return {"file_id": file_id}
     
+@app.get('/models')
+def models():
+    with open("i-ata/utils/ata_models.json", 'r') as file:
+        models = json.load(file)
 
-@app.post('/home')
-async def home_video(request: Request, file: UploadFile):
-    content = await file.read()
+    return models
 
-    editor = MovieEditor()
-    audio_path = editor.create_file(file, content)
+@app.post('/generate_ata')
+async def generate_ata(file_id: str, model: str):
+    audio_path = file_storage.get(file_id)
 
     google_client = Genai('gemini-1.5-flash')
     audio_genai = google_client.upload_content(audio_path)
 
     response = google_client.generate_content(
-        'Com base no audio, escreva uma ATA da reunião. Essa ATA deve contar os seguintes topicos: contexto, topicos da reunia, discussão, porximas acoes, responda no formato HTML',
+        f'Com base no audio enviado, ecreva uma ATA da reunião. Essa ATA deve contar os seguintes topicos: {model}.',
         audio_genai
         )
     
@@ -82,9 +87,6 @@ async def home_video(request: Request, file: UploadFile):
     '''
     return HTMLResponse(content=content_html)
 
-    template.TemplateResponse(
-        request=request, name='upload.html', context={'file': file, 'response': response}
-    )
 
 @app.post('/home_azure')
 async def home_video_azure(request: Request, file: UploadFile):
