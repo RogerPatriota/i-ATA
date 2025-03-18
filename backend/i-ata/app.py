@@ -65,7 +65,7 @@ async def video_transcription(file: UploadFile):
     
 @app.get('/models')
 def models():
-    with open("i-ata/utils/ata_models.json", 'r') as file:
+    with open("i-ata/utils/ata_models.json", 'r', encoding='utf-8') as file:
         models = json.load(file)
 
     return models

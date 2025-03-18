@@ -13,7 +13,7 @@ export function Button(props) {
             case 1:
                 formPayload.append('file', formData.file)
 
-                axios.post('http://127.0.0.1:8000/model', formPayload, {
+                axios.post('http://127.0.0.1:8000/video_transcription', formPayload, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },

@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 import { useForm } from "../context/FormContext"
 import { Circle } from "lucide-react"
@@ -9,12 +10,12 @@ export function Model() {
     const { formData, updateFormData } = useForm()
 
     useEffect(() => {
-        fetch('./models.json', { // por ser na public, o ./ ja encaminha para a root
+        axios.get(' http://127.0.0.1:8000/models', {
             headers: {
                 Accept: "application/json"
             }
         })
-        .then((res) => res.json())
+        .then((res) => res.data)
         .then((res) => setModels(res))
     }, [])
 
