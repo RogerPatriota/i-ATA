@@ -65,8 +65,9 @@ export function Model() {
                 </div>
                 <div className="w-150 max-h-full overflow-auto h-100 border-1 border-gray-300 p-4">
                     {Object.entries(displayModel).map(([key, value]) => (
-                        <div key={displayModel.model}>
-                            <h2 className="font-semibold text-lg text-gray-600 mb-2">{ key }</h2>
+                        <div key={key}>
+                            <h2 className="font-semibold text-lg text-gray-600">{ key }</h2>
+                            <p className="mb-2 text-sm font-light">({ value })</p>
                             { divs }
                         </div>
                     ))

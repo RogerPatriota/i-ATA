@@ -11,7 +11,6 @@ export function FileDrop () {
         const file = event.target.files[0]
         setFilename(file.name)
 
-        console.log(event.target.files)
         if (formData != file) {
             updateFormData('file', file)
         }    
