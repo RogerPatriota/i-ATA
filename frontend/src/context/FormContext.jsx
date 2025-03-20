@@ -5,7 +5,7 @@ const FormContext = createContext()
 export const FormProvider = ({ children }) => {
     const [formData, setFormData ] = useState({
         file: null,
-        fileId: false,
+        fileId: "",
         model: ""
     })
 

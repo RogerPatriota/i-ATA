@@ -5,6 +5,7 @@ import { useForm } from "../context/FormContext"
 
 export function FileDrop () {
     const [ filename, setFilename ] = useState()
+    const [ err, setErr] = useState("")
     const { formData, updateFormData } = useForm()
 
     function handleChange(event) {

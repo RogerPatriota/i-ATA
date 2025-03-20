@@ -3,6 +3,9 @@ import axios from 'axios'
 
 export function Button(props) {
     const { formData, updateFormData } = useForm()
+
+    const isFormWithoutFile = formData.file === null
+    const isFormWithoutModel = formData.model === ""
     
     function handleSubmit() {
         props.onChangeTab()
@@ -40,8 +43,10 @@ export function Button(props) {
     return (
         <button 
             type="button"
+            disabled={isFormWithoutFile}
             onClick={handleSubmit}
-            className="bg-[#4A3AFF] hover:bg-[#4233e7] px-2 py-2 w-38 rounded-full text-xl mt-2 text-white font-bold cursor-pointer"
+            className={`px-2 py-2 w-38 rounded-full text-xl mt-2 font-bold cursor-pointer 
+                ${isFormWithoutFile ? 'bg-[#4a3aff8e] text-white' : 'bg-[#4A3AFF] hover:bg-[#4233e7] text-white'}`}
             >
         Next
         </button>
