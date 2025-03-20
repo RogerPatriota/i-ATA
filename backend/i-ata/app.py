@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .services.audio import MovieEditor
 from .services.google import Genai
 from .services.azure import Azure
+from .models.model import AtaSchema
 
 app = FastAPI()
 
@@ -71,21 +72,18 @@ def models():
     return models
 
 @app.post('/generate_ata')
-async def generate_ata(file_id: str, model: str):
-    audio_path = file_storage.get(file_id)
+def generate_ata(file: AtaSchema):
+    audio_path = file_storage.get(file.file_id)
 
     google_client = Genai('gemini-1.5-flash')
     audio_genai = google_client.upload_content(audio_path)
 
     response = google_client.generate_content(
-        f'Com base no audio enviado, ecreva uma ATA da reunião. Essa ATA deve contar os seguintes topicos: {model}.',
+        f'Com base no audio enviado, ecreva uma ATA da reunião. Essa ATA deve contar os seguintes topicos: {file.model}.',
         audio_genai
         )
     
-    content_html =  f'''
-    {response.text}
-    '''
-    return HTMLResponse(content=content_html)
+    return {"response": response.text}
 
 
 @app.post('/home_azure')

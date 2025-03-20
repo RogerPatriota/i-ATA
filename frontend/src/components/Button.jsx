@@ -2,7 +2,7 @@ import { useForm } from "../context/FormContext"
 import axios from 'axios'
 
 export function Button(props) {
-    const { formData } = useForm()
+    const { formData, updateFormData } = useForm()
     
     function handleSubmit() {
         props.onChangeTab()
@@ -18,12 +18,19 @@ export function Button(props) {
                         'Content-Type': 'multipart/form-data'
                     },
                 })
-                .then((res) => console.log(res.data))
+                .then((res) => updateFormData('fileId', res.data.file_id))
                 .catch((err) => console.log(err))
-
                 break;
             case 2:
-                console.log('teste 2')
+                axios.post('http://localhost:8000/generate_ata', {
+                    file_id: formData.fileId,
+                    model: formData.model
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((res) => console.log(res))
                 break;
             default:
                 break;
