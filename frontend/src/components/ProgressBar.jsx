@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 const ProgressSteps = (props) => {
 
     return (
-        <div className="relative w-145 flex justify-between mt-3 pb-11 border-b-2 border-gray-200">
+        <div className="relative w-130 flex justify-between mt-3 pb-11 border-b-2 border-gray-200">
           {props.steps.map((step, index) => (
             <div key={step.number} className="relative flex flex-col items-center mt-4">
               <div className={
@@ -20,8 +20,8 @@ const ProgressSteps = (props) => {
               </div>
 
               {index < (props.steps.length - 1) && (
-                <div className=' absolute top-1/2 left-10 w-33 h-1'>
-                  <div className={`absolute h-full w-full rounded-full  bg-gray-300`}></div>
+                <div className=' absolute top-1/2 left-10 w-[calc(600%)] h-1 flex justify-between'>
+                  <div className={`h-full w-full rounded-full bg-gray-300`}></div>
                   <div className={`absolute h-full w-0 rounded-full bg-[#4A3AFF]
                   ${(index + 1) == props.currentStep ? 'transition-all duration-500 ease-in-out w-[50%]' : ''}
                   ${index < props.currentStep - 1 ? 'transition-all duration-100 ease-in-out w-full' : ''}`}

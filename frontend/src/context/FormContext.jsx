@@ -6,6 +6,7 @@ export const FormProvider = ({ children }) => {
     const [formData, setFormData ] = useState({
         file: null,
         fileId: "",
+        fileUploaded: false,
         model: ""
     })
 

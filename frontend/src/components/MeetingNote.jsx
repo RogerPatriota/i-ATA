@@ -1,8 +1,13 @@
 import { Pencil } from "lucide-react"
+import { useForm } from "../context/FormContext"
 
 export function MeetingNote() {
+    const { formData } = useForm()
+
     return (
         <div className="w-250 mt-6 flex flex-col items-center gap-3">
+            {/* TODO: colocar a tela de carreamento aqui */}
+            { formData.fileUploaded ? <p> Carregando...</p> : <p> {formData.fileId} </p> }
             <h3 className="text-2xl text-[#494853] ">Transcript</h3>
             <p className="text-[#6F6C90] text-sm text-center">Here are the meeting trasnscription without the ATA model, 
                 <br/>to create de notes, please submit the form

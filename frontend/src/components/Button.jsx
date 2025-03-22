@@ -5,7 +5,6 @@ export function Button(props) {
     const { formData, updateFormData } = useForm()
 
     const isFormWithoutFile = formData.file === null
-    const isFormWithoutModel = formData.model === ""
     
     function handleSubmit() {
         props.onChangeTab()
@@ -22,8 +21,9 @@ export function Button(props) {
                     },
                 })
                 .then((res) => updateFormData('fileId', res.data.file_id))
+                .then(() => updateFormData('fileUploaded', true))
                 .catch((err) => console.log(err))
-                break;
+                break;l
             case 2:
                 axios.post('http://localhost:8000/generate_ata', {
                     file_id: formData.fileId,

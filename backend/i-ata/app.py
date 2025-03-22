@@ -27,6 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# TODO: Implementar um banco de dados para armazenar os arquivos(Redis -> Mongo)
 file_storage = {}
 
 app.mount('/static', StaticFiles(directory='static'), name='static')
