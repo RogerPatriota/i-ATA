@@ -31,7 +31,7 @@ class MovieEditor:
                 temp_file.write(content)
             audio = self.create_audio(temp_dir, temp_file_path, file.filename)
             
-            return audio
+        return audio
         
 
 

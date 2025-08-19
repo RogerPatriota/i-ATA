@@ -88,37 +88,13 @@ def generate_ata(file: AtaSchema):
 
 
 @app.post('/home_azure')
-async def home_video_azure(request: Request, file: UploadFile):
-    content = await file.read()
-
-    audio = MovieEditor()
-    audio_path = audio.create_file(file, content)
+async def home_video_azure(file: AtaSchema):
+    audio_path = file_storage.get(file.file_id)
 
     azure = Azure()
-    response= azure.audio_transcription(file, audio_path)
-
-
-    html_content = f"""
-        <html>
-            <head>
-                <title>ATA GERADA</title>
-            </head>
-            <body>
-                <h1>{response}</h1>
-            </body>
-        </html>
-    """
+    response = azure.audio_transcription(file, audio_path)
     
-    return HTMLResponse(content=html_content, status_code=200)
-
-    template.TemplateResponse(
-        request=request, name='upload.html', context={'file': file, 'response': response}
-    )
-    
-    
-    
-    
-    
+    return {"response": response}
     
     
     
