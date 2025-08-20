@@ -20,18 +20,16 @@ export function Model() {
     }, [])
 
     function handleClick(event) {
-        // define the model that will be displayed
+        
         const modelSelected = models.find(model => model.model == event.target.value)
         setDisplayModel(modelSelected.example)
 
-        // define the number of line the placeholder will have
-        const x = Math.floor(Math.random() * 3) + 1
-        setDivs(genereateDiv(x))
-
-        // set the current model to the context
         if (modelSelected.summary != formData) {
             updateFormData('model', modelSelected.summary) 
         }
+
+        const x = Math.floor(Math.random() * 3) + 1
+        setDivs(genereateDiv(x))
     
     }
 

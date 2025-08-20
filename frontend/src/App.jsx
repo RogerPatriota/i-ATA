@@ -37,10 +37,10 @@ export function App() {
   }
 
   return (
-    <div>
+    <div className="">
       <Header />
       <div className="flex flex-col items-center justify-center p-5 w-6xl m-auto">
-        <h1 className=" text-4xl text-[#170F49] m-5 font-semibold">Generete your meetings notes</h1>
+        <h1 className=" text-4xl text-[#170F49] m-5 mt-3 font-semibold">Generete your meetings notes</h1>
         {/* <p className="text-base text-center text-[#6F6C90]">Please fill the field below with the meeting record, the notes <br/>will be automatic extract</p> */}
         <FormProvider >
           <ProgressContent steps={steps} currentStep={currentStep} onChangeTab={changeTab}/>

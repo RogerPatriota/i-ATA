@@ -7,7 +7,8 @@ export const FormProvider = ({ children }) => {
         file: null,
         fileId: "",
         fileUploaded: false,
-        model: ""
+        model: "",
+        notes: ""
     })
 
     const updateFormData = (key, value) => {

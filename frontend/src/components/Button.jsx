@@ -23,18 +23,21 @@ export function Button(props) {
                 .then((res) => updateFormData('fileId', res.data.file_id))
                 .then(() => updateFormData('fileUploaded', true))
                 .catch((err) => console.log(err))
-                break;l
-            case 2:
-                axios.post('http://localhost:8000/generate_ata', {
-                    file_id: formData.fileId,
-                    model: formData.model
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((res) => console.log(res))
                 break;
+            case 2:
+                console.log('botao 2')
+                break
+                // axios.post('http://localhost:8000/home_azure', {
+                //     file_id: formData.fileId,
+                //     model: formData.model,
+                // }, {
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     }
+                // })
+                // .then((res) => updateFormData('notes', res.data.response))
+                // .catch((err) => console.log(err))
+                // break;
             default:
                 break;
         }
@@ -43,12 +46,12 @@ export function Button(props) {
     return (
         <button 
             type="button"
-            disabled={isFormWithoutFile}
+            //disabled={isFormWithoutFile}
             onClick={handleSubmit}
             className={`px-2 py-2 w-38 rounded-full text-xl mt-2 font-bold cursor-pointer 
                 ${isFormWithoutFile ? 'bg-[#4a3aff8e] text-white' : 'bg-[#4A3AFF] hover:bg-[#4233e7] text-white'}`}
             >
-        Next
+            {props.currentTab == 3 ? 'Save' : 'Next'}
         </button>
     )
 }
