@@ -1,6 +1,8 @@
 import { useForm } from "../context/FormContext"
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export function Button(props) {
     const { formData, updateFormData } = useForm()
 
@@ -15,7 +17,7 @@ export function Button(props) {
             case 1:
                 formPayload.append('file', formData.file)
 
-                axios.post('http://127.0.0.1:8000/video_transcription', formPayload, {
+                axios.post(`${API_URL}/video_transcription`, formPayload, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },

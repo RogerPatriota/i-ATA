@@ -3,16 +3,18 @@ import { useForm } from "../context/FormContext"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export function MeetingNote() {
     const { formData } = useForm()
     const [ meetingNotes, setMeetingNotes ]  = useState()
     const [ loading, setLoading ] = useState(true)
 
     useEffect(() => {
-        axios.post('http://localhost:8000/home_azure', {
+        axios.post(`${API_URL}/home_azure`, {
             file_id: formData.fileId,
             model: formData.model,
-        },{
+        }, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -21,7 +23,6 @@ export function MeetingNote() {
             setMeetingNotes(res.data)
             setLoading(false)
         })
-        .then((res) => {console.log(res.data)})
         .catch((err) => {
             console.log(err)
             setLoading(false)

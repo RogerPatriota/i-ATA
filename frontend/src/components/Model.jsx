@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { useForm } from "../context/FormContext"
 import { Circle } from "lucide-react"
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export function Model() {
     const [ models, setModels ] = useState([])
     const [ displayModel, setDisplayModel ] = useState([])
@@ -10,7 +12,7 @@ export function Model() {
     const { formData, updateFormData } = useForm()
 
     useEffect(() => {
-        axios.get(' http://127.0.0.1:8000/models', {
+        axios.get(`${API_URL}/models`, {
             headers: {
                 Accept: "application/json"
             }
