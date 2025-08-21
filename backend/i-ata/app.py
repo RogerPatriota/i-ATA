@@ -17,6 +17,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
+    "https://ambitious-wave-0c0f5ad0f.1.azurestaticapps.net/"
 ]
 
 app.add_middleware(
