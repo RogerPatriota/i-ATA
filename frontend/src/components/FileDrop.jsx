@@ -18,14 +18,14 @@ export function FileDrop () {
     }
 
     return (
-        <div className="w-180 mt-6 flex flex-col items-center gap-3">
+        <div className="w-250 my-6 flex flex-col items-center gap-3">
             <h3 className="text-2xl text-[#494853] ">Meeting record</h3>
             <p className="text-[#6F6C90] text-sm text-center">Please fill the field below with the meeting record, the notes will be automatic extract</p>
 
             <form action="" method="post" 
             encType="multipart/form-data" className="flex items-center justify-center mt-6">
 
-                <div className="relative overflow-hidden h-100 pl-5 border-dashed border-3 bg-gray-50 hover:bg-gray-100 border-[#4A3AFF] 
+                <div className="relative overflow-hidden h-103 pl-5 border-dashed border-3 bg-gray-50 hover:bg-gray-100 border-[#4A3AFF] 
                     flex flex-col justify-center items-center gap-3 rounded-xl cursor-pointer">
                     {filename && (
                         <div className="absolute top-24 w-120 py-3 flex items-center gap-3 text-lg border-1 border-[#EFF0F6] rounded-md shadow-2xl">

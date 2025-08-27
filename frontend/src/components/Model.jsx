@@ -53,7 +53,7 @@ export function Model() {
     }
 
     return (
-        <div className="w-250 flex flex-col justify-center items-center mt-6 gap-2">
+        <div className="w-250 flex flex-col justify-center items-center my-6 gap-3">
             <h3 className="text-2xl text-[#494853]">Select the model</h3>
             <p className="text-[#6F6C90] text-sm text-center">Each meeting has a diferente propouse, as well the public, <br/>select the way you want to express what happend</p>
 
