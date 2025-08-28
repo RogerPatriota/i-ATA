@@ -23,7 +23,7 @@ export function FileDrop () {
             <p className="text-[#6F6C90] text-sm text-center">Please fill the field below with the meeting record, the notes will be automatic extract</p>
 
             <form action="" method="post" 
-            encType="multipart/form-data" className="flex items-center justify-center mt-6">
+            encType="multipart/form-data" className="flex items-center justify-center my-3">
 
                 <div className="relative overflow-hidden h-103 pl-5 border-dashed border-3 bg-gray-50 hover:bg-gray-100 border-[#4A3AFF] 
                     flex flex-col justify-center items-center gap-3 rounded-xl cursor-pointer">
