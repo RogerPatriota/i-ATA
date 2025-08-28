@@ -82,12 +82,3 @@ async def home_video_azure(file: AtaSchema):
     response_genai = google_client.generate_content(response_azure, file.model)
     
     return {"response": response_genai.candidates[0].content.parts[0].text}
-
-
-@app.post('/teste')
-def teste(body: AAAA):
-    client = Genai()
-
-    response = client.generate_content(body.text, body.model)
-
-    return {"response": response}
