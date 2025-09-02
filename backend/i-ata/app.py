@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .services.audio import MovieEditor
 from .services.google import Genai
 from .services.azure import Azure
-from .models.model import AAAA, AtaSchema
+from .models.model import AtaSchema, Test
 
 app = FastAPI()
 
@@ -43,6 +43,10 @@ async def add_process_time_header(request: Request, call_next):
 def point_check():
     return "check point"
 
+@app.get('/files')
+def files():
+    return {'files': file_storage}
+
 @app.post('/video_transcription')
 async def video_transcription(file: UploadFile):
     content = await file.read()
@@ -69,16 +73,30 @@ def models():
     return models
 
 
-@app.post('/home_azure')
+@app.post('/generate_ata')
 async def home_video_azure(file: AtaSchema):
     audio_path = file_storage.get(file.file_id)
 
+    model_ata_json = json.dumps(file.model, ensure_ascii=False)
 
     azure = Azure()
     response_azure = azure.audio_transcription(file, audio_path)
 
     google_client = Genai()
 
-    response_genai = google_client.generate_content(response_azure, file.model)
+    response_genai = google_client.generate_content(response_azure, model_ata_json)
+
+    json_ata = json.loads(response_genai.candidates[0].content.parts[0].text)
     
-    return {"response": response_genai.candidates[0].content.parts[0].text}
+    return {"response": json_ata}
+
+
+@app.post('/test/{id}')
+def test_ata(place: Test):
+    #google_client = Genai()
+
+    #response_genai = google_client.generate_content(place.text, place.model)
+
+    ata_json = "{\"Titulo\": \"Planejamento para Otimização de Processo Crítico\", \"Objetivo\": \"Apresentar e alinhar as próximas etapas para a otimização de um processo crítico e moroso, visando sua implementação até o final de setembro, em resposta a demandas de clientes e para aprimorar a eficiência operacional.\", \"Resumo dos pontos tratados\": \"1. **Contexto e Urgência:** Foi identificado um processo atual moroso e insustentável, que gera sobrecarga de trabalho e com histórico de reclamações de outros clientes. A urgência para otimização foi intensificada por um projeto específico. 2. **Prazo Estimado:** A meta é ter uma solução concreta e funcional implementada até o final de setembro. 3. **Próximas Etapas:** Será realizada uma melhoria no fluxo atual, que será compartilhada. O engajamento da equipe técnica para o desenvolvimento da solução está previsto para iniciar em agosto. O Process Owner (dono do processo) será envolvido em reuniões para fornecer sua opinião, validar o escopo e contribuir com sua expertise no processo.\"}"
+    response = json.loads(ata_json)
+    return {"response": response['Titulo']} 

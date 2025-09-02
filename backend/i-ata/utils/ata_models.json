@@ -5,8 +5,13 @@
         "summary": "Titulo, Objetivo, Resumo dos pontos tratados",
         "example": {
             "Titulo": "Assunto da reunião",
-            "Objetivo": "Principais pontos tratados na call",
+            "Objetivo": "Objetivo resumido sobre o assunto principal da reunião",
             "Resumo dos pontos tratados": "Resumo dos principais topicos tratados"
+        },
+        "iamodel": {
+            "titulo": "string",
+            "objetivo": "string",
+            "Resumo dos pontos tratados": "string"
         }
     },
     {
@@ -15,8 +20,8 @@
         "summary": "Titulo, Objetivo, Pontos tratados(cada topico com um titulo, discussão)",
         "example": {
             "Titulo": "Assunto da reunião",
-            "Objetivo": "Principais pontos tratados na call",
-            "Topico": "Topico 1",
+            "Objetivo": "Objetivo resumido sobre o assunto principal da reunião",
+            "Topico": "Lista de topicos tratadas na call",
             "Discussão": "Breve resumo do topico"
         }
     },
@@ -26,11 +31,17 @@
         "summary": "Titulo, Objetivo, Pontos tratados(cada topico com um titulo, discussão e decisões), proximas ações e notas",
         "example": {
             "Titulo": "Assunto da reunião",
-            "Objetivo": "Principais pontos tratados na call",
-            "Topico": "Topico 1",
-            "Discussão": "Breve resumo do topico",
+            "Objetivo": "Objetivo resumido sobre o assunto principal da reunião",
+            "Topico": "Lista de topicos tratadas na call",
             "Proximas Ações": "Lista de ações que serão tomadas apos a reunião",
             "Notas": "Observações e ultimos detalhes"
+        },
+        "iamodel": {
+            "titulo": "string",
+            "objetivo": "string",
+            "topico": "string",
+            "proximas ações": "string",
+            "notas": "string"
         }
     }
 

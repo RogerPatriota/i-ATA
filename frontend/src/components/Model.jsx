@@ -27,7 +27,7 @@ export function Model() {
         setDisplayModel(modelSelected.example)
 
         if (modelSelected.summary != formData) {
-            updateFormData('model', modelSelected.summary) 
+            updateFormData('model', modelSelected.example) 
         }
 
         const x = Math.floor(Math.random() * 3) + 1
